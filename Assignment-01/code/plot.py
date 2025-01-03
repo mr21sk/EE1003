@@ -36,11 +36,11 @@ for i in range(n):
     lib.solution(ctypes.byref(x), ctypes.byref(y), 1)
 
 # Plot both y(x) and exp(x)
-plt.plot(x_vals, y_vals, label="y(x)", color='b')
-plt.plot(x_vals, exp_vals, label="exp(x)", color='r', linestyle='--')
+sim_line, = plt.plot(x_vals, y_vals, label="sim", color='b')
+theory_line, = plt.plot(x_vals, exp_vals, label="theory", color='r', linestyle='--')
 plt.xlabel("x")
 plt.ylabel("y and exp(x)")
-plt.legend('sim','theory')
+plt.legend(handles=[sim_line, theory_line])
 plt.grid(True)
 plt.show()
 
