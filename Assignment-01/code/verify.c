@@ -1,25 +1,22 @@
 #include <stdio.h>
 #include <math.h>
 
-int main() {
-    
-double y = M_E;
-double x = 1.0;
-double h = 0.000001; 
-int iterations = 1000000;
+float h = 0.001;
 
- FILE *file = fopen("points.txt", "w");
-if (file == NULL){
-printf("Error opening file!\n");
-return 1;
+// Derivative function
+float derivative(float y, float x) {
+    return (y * log(y)) / x;
 }
 
-for (int i = 0; i < iterations; i++) {
-fprintf(file, "%.6f\t%.6f\n", x, y);
-x += h;
-y += h *(y*log(y))/x;
-}
-fclose(file);
-return 0;
+// Solution function
+void solution(float *x, float *y, int n) {
+    for (int i = 1; i <= n; i++) {
+        // Calculate the exponential of x (e^x)
+        float exp_value = exp(*x);
+
+        // Update y using the derivative 
+        *y += derivative(*y, *x) * h; 
+        *x += h; // Increment x by h
+    }
 }
 

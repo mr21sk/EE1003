@@ -52,94 +52,93 @@
 \renewcommand{\thetable}{\theenumi}
 \setlength{\intextsep}{10pt} % Space between text and floats
 
-\textbf{Question} Solve the differential equation:
+\textbf{Question:} Solve the differential equation given below with initial conditions $ x = 1 $ and $ y = e $.
+\begin{align}
+	y \ln{y} \, dx - x \, dy = 0
+\end{align}
 
-\begin{center}
-$ y \ln(y) \, dx - x \, dy = 0 $
-\end{center}
+\begin{enumerate}
+    \item \textbf{Rearranging the Equation:} First, we rewrite the equation in a more convenient form:
 
-with initial conditions $ x = 1 $ and $ y = e $. \\
-\solution \\
-\textbf{Step 1: Rearranging the Equation} \\
-First, we rewrite the equation in a more convenient form:
-\begin{center}
-$ y \ln(y) \, dx = x \, dy $
-\end{center}
+    \begin{align}
+	    y \ln{y} \, dx &= x \, dy
+    \end{align}
 
-Next, we divide both sides by $ x \ln(y) $:
+    Next, we divide both sides by $ x \ln(y) $:
 
-\begin{center}
-$ \frac{dy}{dx} = \frac{y \ln(y)}{x} $
-\end{center}
+    \begin{align}
+	    \frac{dy}{dx} &= \frac{y \ln{y}}{x}
+    \end{align}
+    
+    \item \textbf{Separation of Variables:} Now, we separate the variables to prepare for integration:
 
-\textbf{Step 2: Separation of Variables} \\
-Now, we separate the variables to prepare for integration:
+    \begin{align}
+	    \frac{dy}{y \ln{y}} &= \frac{dx}{x}
+    \end{align}
+    
+    \item \textbf{Integration:} We now integrate both sides.\\     
+    \begin{align}
+	    u &= \ln{y} \implies du = \frac{1}{y} dy \\   
+	    {\therfore} \int \frac{1}{u} \, du &= \int \frac{1}{x} \, dx
+    \end{align}
 
-\begin{center}
-$ \frac{dy}{y \ln(y)} = \frac{dx}{x} $
-\end{center}
+    This leads to:
 
-\textbf{Step 3: Integration} \\
-We now integrate both sides.
-\begin{center}
-$ u = \ln(y) \implies du = \frac{1}{y} \, dy $ \\
-$ \int \frac{1}{u} \, du = \int \frac{1}{x} \, dx $
-\end{center}
+    \begin{align}
+	    \ln\abs{u} &= \ln\abs{x} + C
+    \end{align}
 
-This leads to:
+		Substituting $ u = \ln{y} $, we have:
 
-\begin{center}
-$ \ln|u| = \ln|x| + C $
-\end{center}
+    \begin{align}
+	    \ln\abs{\ln{y}} &= \ln|x| + C
+    \end{align}
 
-Substituting $ u = \ln(y) $, we have:
+    Exponentiating both sides:
 
-\begin{center}
-$ \ln|\ln(y)| = \ln|x| + C $
-\end{center}
+    \begin{align}
+	    |\ln{y}| &= e^C \abs{x}
+    \end{align}
 
-Exponentiating both sides:
+    Let $ C' = e^C $, so:
 
-\begin{center}
-$ |\ln(y)| = C' |x| $
-\end{center}
+    \begin{align}
+	    \abs{\ln{y}}&= C^\prime \abs{x}
+    \end{align}
 
-where $ C' = e^C $. Now solving for $ y $, we get:
+		Now solving for $ \ln{y} $, we get:
 
-\begin{center}
-$ \ln(y) = C' x $
-\end{center}
+    \begin{align}
+	    \ln{y} &= C^\prime x
+    \end{align}
 
-Exponentiating again:
+    Exponentiating again:
 
-\begin{center}
-$ y = e^{C' x} $
-\end{center}
+    \begin{align}
+    y &= e^{C' x}
+    \end{align}
+    
+    \item \textbf{Applying the Initial Conditions:} To determine the constant $ C^\prime $, we apply the initial condition $ x = 1 $ and $ y = e $:
 
-\textbf{Step 4: Applying the Initial Conditions}
-To determine the constant $ C' $, we apply the initial condition $ x = 1 $ and $ y = e $:
+    \begin{align}
+    e &= e^{C^\prime \cdot 1}
+    \end{align}
 
-\begin{center}
-$ e = e^{C' \cdot 1} $
-\end{center}
+    Thus, $ C^\prime = 1 $, and the solution to the differential equation is:
 
-Thus, $ C' = 1 $, and the solution to the differential equation is:
+    \begin{align}
+    y &= e^x
+    \end{align}
 
-\begin{center}
-$ y = e^x $
-\end{center}
+\item \textbf{CODING LOGIC:} The solution for the differential equation can be graphically solved using coding by using below logic :
 
-
-The solution for the differantial equation can be graphically solved using coding by using below logic :
-
-\begin{center} 
-$x_0 = 1 $ \\
-$y_0 = e $ \\
-$ h=0.1 $ \\
-$y_{n+1} = y_{n} + h\cdot\brak{\frac{y_{n}\ln{y_{n}}}{x_{n}}}$ \\
-$x_{n+1} = x_{n} + h$ \\
-\end{center}
-
+\begin{align} 
+	x_0 &= 1 \\ 
+	y_0 &= e  \\
+	h&=0.1 \\
+	y_{n+1} &= y_{n} + h\cdot\brak{\frac{y_{n}\ln{y_{n}}}{x_{n}}} \\ 
+	x_{n+1} &= x_{n} + h 
+\end{align}
 Below is verification \ref{fig:example} :
 \begin{figure}[h]  % The 'h' means 'here' (positioning)
     \centering  % Centers the figure
@@ -148,4 +147,7 @@ Below is verification \ref{fig:example} :
 \end{figure}
 
 
+\end{enumerate}
+
 \end{document}
+
