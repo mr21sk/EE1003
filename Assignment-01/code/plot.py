@@ -38,8 +38,16 @@ for i in range(n):
 # Plot both y(x) and exp(x)
 sim_line, = plt.plot(x_vals, y_vals, label="sim", color='b')
 theory_line, = plt.plot(x_vals, exp_vals, label="theory", color='r', linestyle='--')
-plt.xlabel("x")
-plt.ylabel("y and exp(x)")
+plt.xlabel("x-axis")
+plt.ylabel("y-axis")
+# Customize axis spines for thick black axes
+ax = plt.gca()  # Get the current axes
+ax.spines['bottom'].set_color('black')  # Bottom axis
+ax.spines['bottom'].set_linewidth(2)    # Set thickness
+ax.spines['left'].set_color('black')    # Left axis
+ax.spines['left'].set_linewidth(2)      # Set thickness
+# Customize tick parameters for thicker black ticks
+ax.tick_params(axis='both', colors='black', width=2, length=6)
 plt.legend(handles=[sim_line, theory_line])
 plt.grid(True)
 plt.show()
