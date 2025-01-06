@@ -57,7 +57,7 @@
 \end{align}
 with initial condtitions :
 \begin{align}
-    x &= 0, \quad y = 0.
+    x &= 0, \quad y = 1.
 \end{align}
 \solution
 \begin{enumerate}
@@ -101,31 +101,33 @@ with initial condtitions :
   \begin{align}
   \int \frac{d}{dx} \brak{y \brak{\sec x + \tan x}} dx &= \int \brak{\sec x + \tan x} \tan x \, dx.
   \end{align}
-  The integral of $\brak{\sec x + \tan x} \tan x$ simplifies to $\sec x + \tan x$:
+  The integral of $\brak{\sec x + \tan x} \tan x$ simplifies to $\sec x + \tan x - x$:
   \begin{align}
-  \frac{d}{dx} \brak{y \brak{\sec x + \tan x}} &= \sec x + \tan x + C,
+  \brak{y \brak{\sec x + \tan x}} &= \sec x + \tan x -x + C,
   \end{align}
   where $C$ is the constant of integration.
 
   \item \textbf{Solve for $y$}:
   Divide through by $\brak{\sec x + \tan x}$:
-  \begin{align}                                                                      y &= \frac{\sec x + \tan x + C}{\brak{\sec x + \tan x}}.
+  \begin{align}                                                                      
+  	    y &= \frac{\sec x + \tan x - x + C}{\brak{\sec x + \tan x}}.
   \end{align} 
 
   This is the general solution to the differential equation.
  \item \textbf{Determining the value of C}:
     Using initial conditions we can easily determine the value of C
     \begin{align}    
-	    0 &= \frac{\sec {0} + \tan {0}+C}{\sec{0}+\tan{0}} \\
-	    0 &= 1+c \\
-	    \therefore c &= -1
+	    1 &= \frac{\sec {0} + \tan {0} -x +C}{\sec{0}+\tan{0}} \\
+	    1 &= 1+c \\
+	    \therefore c &= 0 \\
+	    \therefore y &= \frac{\sec x + \tan x - x}{\brak{\sec x + \tan x}}
     \end{align}
     \item \textbf{CODING LOGIC:} The solution for the differential equation can be graphically solved using coding by using below logic :
 
 \begin{align} 
-	x_0 &= 1 \\ 
-	y_0 &= e  \\
-	h&=0.1 \\
+	x_0 &= 0 \\ 
+	y_0 &= 1  \\
+	h&=0.001 \\
 	y_{n+1} &= y_{n} + h\cdot\brak{\tan{x}-y\sec{x}} \\ 
 	x_{n+1} &= x_{n} + h 
 \end{align}
