@@ -56,23 +56,151 @@
 \textbf{(a) Theoretical Solution : }
 \begin{enumerate}
     \item \textbf{Find Points of Intersection:} \\  
-    To find the points of intersection, solve the system of equations:  
+\item \textbf{Find Points of Intersection:} \\  
+    For \( y^2 = 4x \):
+    \[
+    V_1 = \myvec{ 
+    0 & 0 \\ 
+    0 & 1 
+    }, \quad 
+    u_1 = \myvec{ 
+    -2 \\ 
+    0 
+    }, \quad 
+    f_1 = 0
+    \]
+    The quadratic form is:
+    \[
+    \myvec{ 
+    x \\ 
+    y 
+    }^\top 
+    \myvec{ 
+    0 & 0 \\ 
+    0 & 1 
+    }
+    \myvec{ 
+    x \\ 
+    y 
+    }
+    + 2 \myvec{ 
+    -2 & 0 
+    }
+    \myvec{ 
+    x \\ 
+    y 
+    }
+    + 0 = 0
+    \]
+
+    For \( y = 2x \):
+    \[
+    V_2 = \myvec{ 
+    0 & 0 \\ 
+    0 & 0 
+    }, \quad 
+    u_2 = \myvec{ 
+    -1 \\ 
+    0.5 
+    }, \quad 
+    f_2 = 0
+    \]
+    The quadratic form is:
+    \[
+    \myvec{ 
+    x \\ 
+    y 
+    }^\top 
+    \myvec{ 
+    0 & 0 \\ 
+    0 & 0 
+    }
+    \myvec{ 
+    x \\ 
+    y 
+    }
+    + 2 \myvec{ 
+    -1 & 0.5 
+    }
+    \myvec{ 
+    x \\ 
+    y 
+    }
+    + 0 = 0
+    \]
+
+    \item \textbf{Write the two equations in matrix form:}
+    \begin{itemize}
+        \item From \( Q_1(x, y) \):
+        \[
+        \myvec{ 
+        x \\ 
+        y 
+        }^\top 
+        \myvec{ 
+        0 & 0 \\ 
+        0 & 1 
+        }
+        \myvec{ 
+        x \\ 
+        y 
+        }
+        + 2 \myvec{ 
+        -2 \\ 
+        0 
+        }^\top 
+        \myvec{ 
+        x \\ 
+        y 
+        }
+        = 0
+        \]
+        Simplifies to:
+        \[
+        y^2 - 4x = 0
+        \]
+
+        \item From \( Q_2(x, y) \):
+        \[
+        2 \myvec{ 
+        -1 \\ 
+        0.5 
+        }^\top 
+        \myvec{ 
+        x \\ 
+        y 
+        }
+        = 0
+        \]
+        Simplifies to:
+        \[
+        -2x + y = 0 \quad \text{or equivalently, } y = 2x
+        \]
+    \end{itemize}
+
+    \item \textbf{Substitute \( y = 2x \) from \( Q_2(x, y) \) into \( Q_1(x, y) \):}
     \begin{align}
-        y^2 &= 4x, \\
-        y &= 2x.
+    (2x)^2 - 4x &= 0 \\
+    4x^2 - 4x &= 0 \\
+    x(x - 1) &= 0
     \end{align}
 
-    Substitute $y = 2x$ into $y^2 = 4x$:  
-    \begin{align}
-        \brak{2x}^2 &= 4x, \\
-        4x^2 &= 4x, \\
-        x \brak{x - 1} &= 0.
-    \end{align}
+    \item \textbf{Solve for \( x \):}
+    \[
+    x = 0 \quad \text{or} \quad x = 1
+    \]
 
-    Thus, $x = 0$ or $x = 1$.  
-    For $x = 0$ $y = 2 \cdot 0 = 0$, so one point is $\brak{0, 0}$.  
-    For $x = 1$, $y = 2 \cdot 1 = 2$, so the other point is $\brak{1, 2}$.  
-    Therefore, the curves intersect at $\brak{0, 0}$ and $\brak{1, 2}$. \\
+    \item \textbf{Find \( y \) for each \( x \):}
+    \begin{itemize}
+        \item For \( x = 0 \), \( y = 2(0) = 0 \)
+        \item For \( x = 1 \), \( y = 2(1) = 2 \)
+    \end{itemize}
+
+    \item \textbf{The intersection points are:}
+    \[
+    (0, 0) \quad \text{and} \quad (1, 2)
+    \]
+
 
     \item \textbf{Set Up the Integral:}  \\
     The parabola is $y^2 = 4x \implies x = \frac{y^2}{4}$, and the line is $x = \frac{y}{2}$.  
