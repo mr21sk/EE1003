@@ -1,141 +1,123 @@
-\documentclass[aspectratio=43]{beamer}
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
 
-% Theme and Color
-\usetheme{CambridgeUS}
-\usecolortheme{beaver}
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
 
-% Additional Packages
-\usepackage{amsmath, amssymb, amsfonts, graphicx, xcolor, hyperref}
-
-% Title and Author
-\title[\textbf{NCERT 9.1.4}]{Solving a Nonlinear Second-Order ODE}
-\subtitle{\((\frac{d^2y}{dx^2})^2 + \cos\left(\frac{dy}{dx}\right) = 0\)}
-\author[Krishna Patil]{EE24BTECH11036 \\ Krishna Patil}
-\institute[University]{Department of Electrical Engineering}
-\date{\today}
-
-% Begin Document
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
 \begin{document}
 
-% Title Slide
-\begin{frame}[plain]
-    \titlepage
-\end{frame}
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
 
-% Outline Slide
-\begin{frame}{Outline}
-    \tableofcontents
-\end{frame}
+\title{NCERT 9.1.4}
+\author{EE24BTECH11036 - Krishna Patil}
 
-% Introduction Slide
-\section{Introduction}
-\begin{frame}{Introduction}
-    \textbf{Problem Statement:} Solve the second-order nonlinear ODE:
-    \[
-    \left(\frac{d^2y}{dx^2}\right)^2 + \cos\left(\frac{dy}{dx}\right) = 0.
-    \]
-    \pause
-    \textbf{Objective:}
-    \begin{itemize}
-        \item Convert the equation into a system of first-order ODEs.
-        \item Apply the Runge-Kutta 4th-order method (RK4) for a numerical solution.
-        \item Validate and visualize the results.
-    \end{itemize}
-\end{frame}
+% \maketitle
+% \newpage
+% \bigskip
+{\let\newpage\relax\maketitle}
 
-% System of First-Order ODEs Slide
-\section{System of First-Order ODEs}
-\begin{frame}{Converting to First-Order ODEs}
-    Let:
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+
+
+\textbf{Question:} Solve the ODE \((\frac{d^2y}{dx^2})^2 + \cos\left(\frac{dy}{dx}\right) = 0.\)
+
+\solution
+The given equation is:
+\[
+\left(\frac{d^2y}{dx^2}\right)^2 + \cos\left(\frac{dy}{dx}\right) = 0.
+\]
+
+\begin{enumerate}
+    \item \textbf{Reformulate the equation:}
+    Define \(v = \frac{dy}{dx}\) and \(u = \frac{d^2y}{dx^2}\). The equation becomes:
     \[
-    v = \frac{dy}{dx}, \quad u = \frac{d^2y}{dx^2}.
+    u^2 + \cos(v) = 0.
     \]
-    The equation becomes:
+    Solving for \(u\), we get:
     \[
-    u^2 + \cos(v) = 0 \quad \implies \quad u = \pm \sqrt{-\cos(v)}.
+    u = \pm \sqrt{-\cos(v)}, \quad \text{valid only for } \cos(v) < 0.
     \]
-    \pause
-    The system of equations is:
+
+    Thus, the system of equations is:
+    \[
+    \frac{dy}{dx} = v, \quad \frac{dv}{dx} = u = \pm \sqrt{-\cos(v)}.
+    \]
+
+    \item \textbf{Update equations for \(y\):}
+    Using the RK4 method, the update for \(y\) is:
     \begin{align*}
-        \frac{dy}{dx} &= v, \\
-        \frac{dv}{dx} &= u = \pm \sqrt{-\cos(v)}.
+        k_{y,1} &= h \cdot v, \\
+        k_{y,2} &= h \cdot \left(v + \frac{k_{v,1}}{2}\right), \\
+        k_{y,3} &= h \cdot \left(v + \frac{k_{v,2}}{2}\right), \\
+        k_{y,4} &= h \cdot \left(v + k_{v,3}\right), \\
+        y_{n+1} &= y_n + \frac{1}{6}\left(k_{y,1} + 2k_{y,2} + 2k_{y,3} + k_{y,4}\right).
     \end{align*}
-    \textbf{Note:} This is valid only when \( \cos(v) < 0 \).
-\end{frame}
 
-% RK4 Method Slide
-\section{Runge-Kutta Method (RK4)}
-\begin{frame}{Runge-Kutta 4th-Order Method (RK4)}
-    \textbf{RK4 Method Overview:}
-    \[
-    y_{n+1} = y_n + \frac{1}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right),
-    \]
-    where
+    \item \textbf{Update equations for \(v\):}
+    Using the RK4 method for \(v\), we have:
     \begin{align*}
-        k_1 &= h \cdot f(x_n, y_n), \\
-        k_2 &= h \cdot f\left(x_n + \frac{h}{2}, y_n + \frac{k_1}{2}\right), \\
-        k_3 &= h \cdot f\left(x_n + \frac{h}{2}, y_n + \frac{k_2}{2}\right), \\
-        k_4 &= h \cdot f(x_n + h, y_n + k_3).
+        k_{v,1} &= h \cdot \sqrt{-\cos(v)}, \\
+        k_{v,2} &= h \cdot \sqrt{-\cos\left(v + \frac{k_{v,1}}{2}\right)}, \\
+        k_{v,3} &= h \cdot \sqrt{-\cos\left(v + \frac{k_{v,2}}{2}\right)}, \\
+        k_{v,4} &= h \cdot \sqrt{-\cos\left(v + k_{v,3}\right)}, \\
+        v_{n+1} &= v_n + \frac{1}{6}\left(k_{v,1} + 2k_{v,2} + 2k_{v,3} + k_{v,4}\right).
     \end{align*}
-    \pause
-    Apply RK4 iteratively to approximate the solutions of the system:
-    \begin{align*}
-        \frac{dy}{dx} &= v, \quad \frac{dv}{dx} = \pm \sqrt{-\cos(v)}.
-    \end{align*}
-\end{frame}
 
-% Numerical Solution Slide
-\section{Numerical Solution}
-\begin{frame}{Numerical Solution}
-    Steps for numerical implementation:
-    \begin{enumerate}
-        \item Initialize \( y(0) = y_0 \) and \( v(0) = v_0 \) such that \( \cos(v_0) < 0 \).
-        \item Choose a step size \( h \) (e.g., \( h = 0.01 \)).
-        \item Iterate using RK4 to compute \( y_{n+1} \) and \( v_{n+1} \).
-        \item Continue until the desired range of \( x \) is covered.
-    \end{enumerate}
-    \pause
-    Example initial values:
-    \[
-    y(0) = 0, \quad v(0) = -1.
-    \]
-    Use these to compute the first few steps.
-\end{frame}
+    \item \textbf{Numerical Implementation:}
+    The numerical solution proceeds by alternating updates for \(y\) and \(v\), using the equations above. Choose initial values \(y(0) = y_0\) and \(v(0) = v_0\), and iterate using a step size \(h\).
+\end{enumerate}
 
-% Visualization Slide
-\section{Visualization}
-\begin{frame}{Visualization of the Solution}
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.8\linewidth]{fig/Figure_1.png}
-        \caption{Numerical solution of the ODE.}
-    \end{figure}
-    \pause
-    \textbf{Observation:} The solution satisfies the given ODE and respects the condition \( \cos(v) < 0 \).
-\end{frame}
+\textbf{Summary of the Two-Step RK4 Process:}
+- Update \(y\) using \(k_{y,1}, k_{y,2}, k_{y,3}, k_{y,4}\).
+- Update \(v\) using \(k_{v,1}, k_{v,2}, k_{v,3}, k_{v,4}\).
 
-% Conclusion Slide
-\section{Conclusion}
-\begin{frame}{Conclusion}
-    \textbf{Key Takeaways:}
-    \begin{itemize}
-        \item The given nonlinear second-order ODE can be converted into a system of first-order ODEs.
-        \item The Runge-Kutta 4th-order method (RK4) is effective for solving such systems numerically.
-        \item Visualizing the solution helps verify its accuracy and behavior.
-    \end{itemize}
-    \pause
-    \textbf{Future Work:}
-    \begin{itemize}
-        \item Analyze the solution's behavior for different initial conditions.
-        \item Extend the approach to similar nonlinear ODEs.
-    \end{itemize}
-\end{frame}
+\textbf{Note:} Ensure that the step size \(h\) is small enough to maintain accuracy and stability.
 
-% Thank You Slide
-\begin{frame}[plain]
+Below is the plot \figref{fig:example}.
+
+\begin{figure}[h]
     \centering
-    \Huge \textbf{Thank You!}
-\end{frame}
+    \includegraphics[width=\columnwidth]{fig/Figure_1.png}
+    \caption{Verification}
+    \label{fig:example}
+\end{figure}
+
+\end{document}
 
 \end{document}
 
