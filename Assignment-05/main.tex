@@ -52,9 +52,13 @@
 \renewcommand{\thetable}{\theenumi}
 \setlength{\intextsep}{10pt} % Space between text and floats
 
-\textbf{Question :}  Find two numbers whose sum is 24 and whose product is as large as possible.
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
 
-\textbf{Solution:}
+\textbf{Question :}  Find two numbers whose sum is 24 and whose product is as large as possible. \\
+
+\solution \\
 
 Let the two numbers be $ x $ and $ y $. We are given the following conditions:
 
@@ -154,7 +158,12 @@ For Radius of convergence , using ratio test , we get ,
 \end{align}
 
 Taking initial guess = 0 , step size = 0.01 ,tolerance(minimum value of gradient) = 1e-5 , We get 
-$x_{min} = 12$\\
+$x_{min} \approx 12 $. \\
+
+\textbf{Geometric Programming} :
+
+We generally use geometric programming for minimize so instead of maximizing $24x - x^2$,we minimize $x^2 -24x$.
+We solve it using $cvxpy$ module in python. On running the code we, get maximum value at $x$ is, $12.00000$, so, maximum product value is $144.00000$.
 
 \begin{figure}[h!]
    \centering
