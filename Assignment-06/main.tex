@@ -137,6 +137,106 @@ So, the equation becomes
 						x_{n+1} &= x_n - \frac{x_n^2 - 2x_n + 1}{2x_n - 2}
 					\end{align}
 				After computing , we obtain $x = 0.999999$ which is pretty near to the solution. \\ 
+			\item \textbf{CODING LOGIC FOR FINDING EIGENVALUES :-}\\
+
+
+The quadratic equation 
+\begin{align}
+x^2 - 2x + 1 = 0
+\end{align}
+is rewritten in matrix form:
+\begin{align}
+\text{Matrix} =
+\myvec{0 & -\frac{c}{a} \\
+1 & -\frac{b}{a}
+}
+\end{align}
+
+\begin{align}
+a = 1, \quad b = -2, \quad c = 1.
+\end{align}
+
+Substituting the values of $a,b$ and $c$, the matrix becomes:\\
+Let
+\begin{align}
+\text{A} =
+\myvec{0 & -1 \\
+1 & 2
+}
+\end{align}
+\textbf{QR-DECOMPOSITION:-GRAM-SCHMIDT METHOD}\\
+
+
+
+\begin{enumerate}
+
+\item QR decomposition 
+\begin{align}
+A = QR
+\end{align}
+\begin{enumerate}
+    \item $Q$ is an $ m \times n $ orthogonal matrix
+    \item $R$ is an $n \times n$ upper triangular matrix.
+\end{enumerate}
+Given a matrix $ A = [a_1, a_2, \dots, a_n] $, where each $ a_i $ is a column vector of size $ m \times 1 $.
+
+\item Normalize the first column of $A$:
+\begin{align}
+q_1 = \frac{a_1}{\norm{a_1}}
+\end{align}
+
+\item  For each subsequent column $ a_i $, subtract the projections of the previously obtained orthonormal vectors from $ a_i $ :
+\begin{align}
+a_i' = a_i - \sum_{k=1}^{i-1} \langle a_i, q_k \rangle q_k
+\end{align}
+Normalize the result to obtain the next column of \( Q \):
+\begin{align}
+q_i = \frac{a_i'}{\norm{a_i'}}
+\end{align}
+
+Repeat this process for all columns of \( A \).
+
+\item Finding $R$:- \\
+After constructing the ortho-normal columns $ q_1, q_2, \dots, q_n $ of $Q$, we can compute the elements of $R$ by taking the dot product of the original columns of $A$ with the columns of $Q$:
+
+\begin{align}
+    r_{ij} = \langle a_j, q_i \rangle \text{ , for  }  i \leq j 
+\end{align}
+\end{enumerate}
+
+
+
+\textbf{QR-Algorithm}\\
+\begin{enumerate}
+\item Initialization \\
+Let $A_0 = A $, where $A$ is the given matrix.
+
+\item QR Decomposition \\
+For each iteration $ k = 0, 1, 2, \dots $:
+\begin{enumerate}
+    \item Compute the QR decomposition of \( A_k \), such that:
+    \begin{align}
+    A_k = Q_k R_k
+    \end{align}
+    where:
+    \begin{enumerate}
+        \item $Q_k $ is an orthogonal matrix ($ Q_k^\top Q_k = I $).
+        \item $ R_k $ is an upper triangular matrix.
+    \end{enumerate}
+    The decomposition ensures $ A_k = Q_k R_k $.
+
+    \item Form the next matrix \( A_{k+1} \) as:
+    \begin{align}
+    A_{k+1} = R_k Q_k
+    \end{align}
+\end{enumerate}
+
+\item Convergence\\
+Repeat Step 2 until $ A_k $ converges to an upper triangular matrix $ T $. The diagonal entries of $T$ are the eigenvalues of $A$.\\
+\item The eigenvalues of matrix will be the roots of the equation.
+
+how using code we obtain x values as 1.001000 and 0.999000
+\end{enumerate}
 		\end{enumerate}
 		
 	
