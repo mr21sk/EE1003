@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Problem Statement}{3}{0}{1}
+\beamer@sectionintoc {2}{Reformulating the Equation}{4}{0}{2}
+\beamer@sectionintoc {3}{Numerical Method: RK4}{5}{0}{3}
+\beamer@sectionintoc {4}{Implementation Steps}{7}{0}{4}
+\beamer@sectionintoc {5}{Results and Visualization}{8}{0}{5}
+\beamer@sectionintoc {6}{Conclusion}{9}{0}{6}
