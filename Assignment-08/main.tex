@@ -55,50 +55,29 @@
 
 \textbf{Question}: In a class of $60$ students, $30$ opted for NCC, $32$ opted for NSS and $24$ opted for both NCC and NSS. If one of these students is selected at random, find the probability that the student has opted neither NCC nor NSS. \\ \\
 \solution
-
-\textbf{Given:}
-
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{|c|l|}
-        \hline
-        \textbf{Symbol} & \textbf{Description} \\ \hline
-        $N = 60$        & Total number of students \\ \hline
-        $|A| = 30$      & Students who opted for NCC \\ \hline
-        $|B| = 32$      & Students who opted for NSS \\ \hline
-        $|A \cap B| = 24$ & Students who opted for both NCC and NSS \\ \hline
-    \end{tabular}
-    \caption{Details of students in the class}
+Define random variables $X$ and $Y$ as shown in the table \ref{table}, \\
+\begin{table}[h!]    
+  \centering
+  \input{tables/table1.tex}
+  \caption{defining random variable}
+  \label{table}
 \end{table}
-
-We aim to find the probability of a student opting for neither NCC nor NSS, i.e., the complement of $A \cup B$, denoted as $|(A \cup B)^c|$.
-
-\begin{enumerate}
-    \item \textbf{Calculate $|A \cup B|$:}
-    \begin{align*}
-        |A \cup B| &= |A| + |B| - |A \cap B| \\
-        &= 30 + 32 - 24 \\
-        &= 38
-    \end{align*}
-
-    \item \textbf{Find $|(A \cup B)^c|$:}
-    \begin{align*}
-        |(A \cup B)^c| &= N - |A \cup B| \\
-        &= 60 - 38 \\
-        &= 22
-    \end{align*}
-
-    \item \textbf{Calculate the probability:}
-    \begin{align*}
-        P(\text{neither}) &= \frac{|(A \cup B)^c|}{N} \\
-        &= \frac{22}{60} \\
-        &= \frac{11}{30}
-    \end{align*}
-\end{enumerate}
-
-\textbf{Final Answer:} The probability that the student has opted for neither NCC nor NSS is $\frac{11}{30}$. \\ 
-After solving this computationally, we get simulated Probability of neither NCC nor NSS: 0.36624 .
- 
+\newline From the given data
+    \begin{align}
+        \pr{X=1} &= \frac{30}{60} = \frac{1}{2} \\
+        \pr{Y=1} &= \frac{32}{60} = \frac{8}{15} \\
+        \pr{X=1,\ Y=1} &= \frac{24}{60} = \frac{2}{5}    
+    \end{align}
+Now using axioms of probability (boolean logic),
+Thus, we write
+    \begin{align}
+	    \pr{X=1,\ Y=0} &= \pr{X=1} - \pr{X=1,\ Y=1} = \frac{1}{10} \\
+	    \pr{X=0,\ Y=1} &= \pr{Y=1} - \pr{X=1,\ Y=1} = \frac{2}{15} \\
+            \pr{X=0,\ Y=0} &= \pr{Y=0} - \pr{X=1,\ Y=0} \\
+			   &= 1 - \pr{Y=1} - \pr{X=1,\ Y=0} \\
+        		   &= 1 - \frac{8}{15} - \frac{1}{10} = \frac{11}{30}
+    \end{align}
+\newline So, the probablity \pr{X=0,\ Y=0} i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
+Also after verifying using computational method to get the probability as 0.36680.
 \end{document}
-
 
