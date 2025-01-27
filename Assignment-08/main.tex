@@ -61,36 +61,18 @@ Define events $A$ and $B$ as shown in the table \ref{table}, \\
   \caption{defining events}
   \label{table}
 \end{table}
-\newline For any two event A and B, the truth table {boolean logic}\ref{table*} for proving $\pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}$ is as follows:  \\
-\begin{table}[h!]    
-  \centering
-  \input{tables/table2.tex}
-  \caption{boolean logic}
-  \label{table*}
-\end{table}
-\newline From the truth table:
-From the truth table:
-\begin{itemize}
-    \item \( Pr(A^\prime) \): Fraction of rows where \( A = 1 \).
-    \[
-    Pr(A^\prime) = \frac{\text{Number of rows where } A^\prime = 1}{\text{Total rows}} = \frac{2}{4} = 0.5.
-    \]
-    \item \( Pr(B^\prime) \): Fraction of rows where \( B^\prime = 1 \).
-    \[
-    Pr(B^\prime) = \frac{\text{Number of rows where } B^\prime = 1}{\text{Total rows}} = \frac{2}{4} = 0.5.
-    \]
-    \item \( Pr(A^\prime \cdot B^\prime) \): Fraction of rows where \( A^\prime \cdot B^\prime = 1 \).
-    \[
-    Pr(A^\prime \cdot B^\prime) = \frac{\text{Number of rows where } A^\prime \cdot B^\prime = 1}{\text{Total rows}} = \frac{1}{4} = 0.25.
-    \]
-    \item \( Pr(A^\prime + B^\prime) \): Fraction of rows where \( A^\prime + B^\prime = 1 \).
-    \[
-    Pr(A^\prime + B^\prime) = \frac{\text{Number of rows where } A\prime + B^\prime = 1}{\text{Total rows}} = \frac{3}{4} = 0.75.
-    \]
-   \end{itemize}
+\newline For any two event A and B,  for proving $\pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}$  \\
+\begin{align}
+ \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime + {\brak{A^\prime}}^\prime} 
+\end{align}
+Using the distributive property in Boolean algebra, $\pr{B^\prime + {\brak{A^\prime}}^\prime}$ can be rewritten as:
+\begin{align}
+\pr{B^\prime + {\brak{A^\prime}}^\prime} &= \pr{B^\prime} - \pr{A^\prime+B^\prime} \\
+ \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime + B^\prime}
+\end{align}
    \newline $\therefore \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime + B^\prime}$
    
-   newline From the given data in question,
+   \newline From the given data in question,
     \begin{align}
         \pr{A^\prime} &= \frac{30}{60} = \frac{1}{2} \\
         \pr{B^\prime} &= \frac{28}{60} = \frac{7}{15} \\
