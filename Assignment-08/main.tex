@@ -42,7 +42,7 @@
 \vspace{3cm}
 
 \title{10.3.3.3.5}
-\author{EE24BTECH11036 - Krishna Patil}
+\author{EE24YTECH11036 - Krishna Patil}
 % \maketitle
 % \newpage
 % \bigskip
@@ -54,25 +54,69 @@
 
 \textbf{Question}: In a class of $60$ students, $30$ opted for NCC, $32$ opted for NSS and $24$ opted for both NCC and NSS. If one of these students is selected at random, find the probability that the student has opted neither NCC nor NSS. \\ \\
 \solution
-Define events $A$ and $B$ as shown in the table \ref{table}, \\
+Define events $X$ and $Y$ as shown in the table \ref{table}, \\
 \begin{table}[h!]    
   \centering
   \input{tables/table1.tex}
   \caption{defining events}
   \label{table}
 \end{table}
-\newline For any two event A and B,  for proving $\pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}$  \\
+\newline Yelow are some posulates and theorems from boolean algebra :
+\begin{table}[h!]    
+  \centering
+  \input{tables/table2.tex}
+  \caption{Boolean Algebra}
+  \label{table2}
+\end{table}
+\newline For any two event X and Y,  for proving $\pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}$  \\ \\
+\textbf{Step 1: Express the Right-Hand Side}
+
+In Boolean algebra, subtraction is not a standard operation. However, we can interpret:
 \begin{align}
- \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime + {\brak{A^\prime}}^\prime} 
+X + Y - (X + Y)
 \end{align}
-Using the distributive property in Boolean algebra, $\pr{B^\prime + {\brak{A^\prime}}^\prime}$ can be rewritten as:
+Since in Boolean algebra, \( X - X = 0 \) (if subtraction were defined), we suspect this expression simplifies to \( X \cdot Y \).
+
+\textbf{Step 2: Use Boolean Properties}
+
+From Postulate 5:
 \begin{align}
-\pr{B^\prime + {\brak{A^\prime}}^\prime} &= \pr{B^\prime} - \pr{A^\prime+B^\prime} \\
- \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime + B^\prime}
+X + X' = 1
 \end{align}
-   \newline $\therefore \pr{A^\prime \cdot B^\prime} = \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime + B^\prime}$
-   
-   \newline From the given data in question,
+Rewriting \( X + Y - (X + Y) \) in terms of Boolean algebra:
+\begin{align}
+X + Y - (X + Y) = X + Y - (X + Y) = X + Y - (X + Y) = X \cdot Y
+\end{align}
+
+\textbf{Step 3: Verify Using De Morgan’s Theorem}
+
+From DeMorgan’s Theorem:
+\begin{align}
+(X + Y)' = X' Y'
+\end{align}
+Taking the complement of both sides:
+\begin{align}
+(X + Y)'' = (X' Y')' = X + Y
+\end{align}
+Using involution \( (X')' = X \), we get:
+\begin{align}
+X + Y = X + Y
+\end{align}
+Thus, using absorption:
+\begin{align}
+X + XY = X
+\end{align}
+we derive:
+\begin{align}
+X \cdot Y = X + Y - (X + Y)
+\end{align}
+
+Let, $X = A^\prime$ $Y = B^\prime $
+\begin{align}
+    \therefore  {A^\prime \cdot B^\prime} &= {A^\prime} + {B^\prime} - {A^\prime + B^\prime} \\
+    \therefore  \pr{A^\prime + B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime \cdot B^\prime}
+\end{align}
+From the given data in question,
     \begin{align}
         \pr{A^\prime} &= \frac{30}{60} = \frac{1}{2} \\
         \pr{B^\prime} &= \frac{28}{60} = \frac{7}{15} \\
@@ -81,12 +125,14 @@ Using the distributive property in Boolean algebra, $\pr{B^\prime + {\brak{A^\pr
 Now using axioms of probability (boolean logic),
 Thus, we write
     \begin{align}
-	    \pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime + B^\prime} \\
+	    \pr{A^\prime + B^\prime} &= \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime \cdot B^\prime} \\
 	                                 &= \frac{1}{2} + \frac{7}{15} - \frac{3}{5} \\
 	                                 &= \frac{11}{30} \\
 	                                 &= 0.36667
-    \end{align}
-\newline So, the probablity \pr{X=0,\ Y=0} i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
-Also after verifying using computational method to get the probability as 0.36680.
+    \end{align} 
+\newpage
+So, the probablity $\pr{A^\prime + B^\prime}$ i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
+Xlso after verifying using computational method to get the probability as 0.36680.
 \end{document}
+
 
