@@ -68,53 +68,27 @@ Define events $X$ and $Y$ as shown in the table \ref{table}, \\
   \caption{Boolean Algebra}
   \label{table2}
 \end{table}
-\newline For any two event X and Y,  for proving $\pr{A^\prime \cdot B^\prime} = \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}$  \\ \\
-\textbf{Step 1: Express the Right-Hand Side}
-
-In Boolean algebra, subtraction is not a standard operation. However, we can interpret:
+\newline For any two event A and B,  for proving 
 \begin{align}
-X + Y - (X + Y)
+\pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime} \\
+\pr{A^\prime \cdot B^\prime} + \pr{A^\prime + B^\prime} = \pr{A^\prime} + \pr{B^\prime} 
 \end{align}
-Since in Boolean algebra, \( X - X = 0 \) (if subtraction were defined), we suspect this expression simplifies to \( X \cdot Y \).
-
-\textbf{Step 2: Use Boolean Properties}
-
-From Postulate 5:
+we start with two event say , X and Y ,and interpret the equation \ref{2} as $\brak{X + Y}+\brak{X \cdot Y} = A + B $ \\ \\
+\textbf{Step 1: Express the Left-Hand Side}
+In Boolean algebra, subtraction is not a standard operation. However, we can interpret the equation,
 \begin{align}
-X + X' = 1
+\brak{X + Y}+\brak{X \cdot Y} &= X + \brak{Y + X \cdot Y}  
 \end{align}
-Rewriting \( X + Y - (X + Y) \) in terms of Boolean algebra:
+Now by absorption theorem , 
 \begin{align}
-X + Y - (X + Y) = X + Y - (X + Y) = X + Y - (X + Y) = X \cdot Y
+\brak{Y + X \cdot Y} &= Y \\
+\therefore \brak{X + Y+X \cdot Y} = X + Y  
 \end{align}
-
-\textbf{Step 3: Verify Using De Morgan’s Theorem}
-
-From DeMorgan’s Theorem:
-\begin{align}
-(X + Y)' = X' Y'
-\end{align}
-Taking the complement of both sides:
-\begin{align}
-(X + Y)'' = (X' Y')' = X + Y
-\end{align}
-Using involution \( (X')' = X \), we get:
-\begin{align}
-X + Y = X + Y
-\end{align}
-Thus, using absorption:
-\begin{align}
-X + XY = X
-\end{align}
-we derive:
-\begin{align}
-X \cdot Y = X + Y - (X + Y)
-\end{align}
-
 Let, $X = A^\prime$ $Y = B^\prime $
 \begin{align}
-    \therefore  {A^\prime \cdot B^\prime} &= {A^\prime} + {B^\prime} - {A^\prime + B^\prime} \\
-    \therefore  \pr{A^\prime + B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime \cdot B^\prime}
+    \therefore  {A^\prime \cdot B^\prime} + {A^\prime + B^\prime}&= {A^\prime} + {B^\prime} \\
+    \therefore  \pr{A^\prime + B^\prime} + \pr{A^\prime \cdot B^\prime}&= \pr{A^\prime} + \pr{B^\prime} \\
+    \therefore  \pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}
 \end{align}
 From the given data in question,
     \begin{align}
@@ -130,7 +104,6 @@ Thus, we write
 	                                 &= \frac{11}{30} \\
 	                                 &= 0.36667
     \end{align} 
-\newpage
 So, the probablity $\pr{A^\prime + B^\prime}$ i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
 Xlso after verifying using computational method to get the probability as 0.36680.
 \end{document}
