@@ -71,25 +71,69 @@ Define events $X$ and $Y$ as shown in the table \ref{table}, \\
 \newline For any two event A and B,  for proving 
 \begin{align}
 \pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime} \\
-\pr{A^\prime \cdot B^\prime} + \pr{A^\prime + B^\prime} = \pr{A^\prime} + \pr{B^\prime} 
+\pr{A^\prime \cdot B^\prime} + \pr{A^\prime + B^\prime} &= \pr{A^\prime} + \pr{B^\prime} \label{equation2} 
 \end{align}
-we start with two event say , X and Y ,and interpret the equation \ref{2} as $\brak{X + Y}+\brak{X \cdot Y} = A + B $ \\ \\
+we start with two event say , X and Y ,and interpret the equation \ref{equation2} as $\brak{X + Y}+\brak{X \cdot Y} = X + Y $ \\ \\
 \textbf{Step 1: Express the Left-Hand Side}
 In Boolean algebra, subtraction is not a standard operation. However, we can interpret the equation,
 \begin{align}
-\brak{X + Y}+\brak{X \cdot Y} &= X + \brak{Y + X \cdot Y}  
+\brak{X + Y}+\brak{X \cdot Y} &= X + \brak{Y + \brak{X \cdot Y}}  
 \end{align}
 Now by absorption theorem , 
 \begin{align}
-\brak{Y + X \cdot Y} &= Y \\
-\therefore \brak{X + Y+X \cdot Y} = X + Y  
+\brak{Y + \brak{X \cdot Y}} &= Y \\
+\therefore \brak{X +  Y + \brak{X \cdot Y}} = \brak{X + Y}  
 \end{align}
 Let, $X = A^\prime$ $Y = B^\prime $
 \begin{align}
-    \therefore  {A^\prime \cdot B^\prime} + {A^\prime + B^\prime}&= {A^\prime} + {B^\prime} \\
-    \therefore  \pr{A^\prime + B^\prime} + \pr{A^\prime \cdot B^\prime}&= \pr{A^\prime} + \pr{B^\prime} \\
+    \therefore  \brak{A^\prime \cdot B^\prime} + \brak{A^\prime + B^\prime}&= \brak{{A^\prime} + {B^\prime}} \\
+\end{align}
+
+
+using the axioms of probability. The axioms we use are:
+
+\begin{enumerate}
+    \item \textbf{Non-negativity}: For any event \(E\), \(\Pr(E) \geq 0\).
+    \item \textbf{Unit measure}: \(\Pr(S) = 1\), where \(S\) is the sample space.
+    \item \textbf{Additivity}: For any two mutually exclusive events \(E\) and \(F\), \(\Pr(E + F) = \Pr(E) + \Pr(F)\).
+\end{enumerate}
+
+
+
+\subsection*{Detailed Derivation}
+
+
+1. \textbf{Apply the Additivity Axiom}:
+   Since \(A^{\prime}\) and \(B^{\prime} \cdot A^{\prime\prime}\) are mutually exclusive (they cannot occur simultaneously), we can apply the additivity axiom:
+   \[
+   \Pr(A^{\prime} + B^{\prime}) = \Pr(A^{\prime}) + \Pr(B^{\prime} \cdot A^{\prime\prime})
+   \]
+
+
+2. \textbf{Apply the Additivity Axiom Again}:
+   Since \(B^{\prime} \cdot A^{\prime\prime}\) and \(A^{\prime} \cdot B^{\prime}\) are mutually exclusive, we have:
+   \[
+   \Pr(B^{\prime}) = \Pr(B^{\prime} \cdot A^{\prime\prime}) + \Pr(A^{\prime} \cdot B^{\prime})
+   \]
+   Rearranging this gives:
+   \[
+   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(B^{\prime}) - \Pr(B^{\prime} \cdot A^{\prime\prime})
+   \]
+
+3. \textbf{Combine the Results}:
+   Substitute \(\Pr(B^{\prime} \cdot A^{\prime\prime})\) from the union expression into the intersection expression:
+   \[
+   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(B^{\prime}) - (\Pr(A^{\prime} + B^{\prime}) - \Pr(A^{\prime}))
+   \]
+   Simplifying this, we get:
+   \[
+   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(A^{\prime}) + \Pr(B^{\prime}) - \Pr(A^{\prime} + B^{\prime})
+   \]
+
+\begin{align}      
     \therefore  \pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}
 \end{align}
+
 From the given data in question,
     \begin{align}
         \pr{A^\prime} &= \frac{30}{60} = \frac{1}{2} \\
