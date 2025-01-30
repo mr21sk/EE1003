@@ -61,95 +61,70 @@ Define events $X$ and $Y$ as shown in the table \ref{table}, \\
   \caption{defining events}
   \label{table}
 \end{table}
-\newline Yelow are some posulates and theorems from boolean algebra :
+\newline Below are some posulates and theorems from boolean algebra : 
 \begin{table}[h!]    
   \centering
   \input{tables/table2.tex}
   \caption{Boolean Algebra}
   \label{table2}
 \end{table}
-\newline For any two event A and B,  for proving 
+\newline The axioms of probability are as follows:
+
+\textbf{Non-Negativity Axiom:}
+\[
+P(A) \geq 0
+\]
+The probability of any event \( A \) is always non-negative.
+
+\textbf{Normalization Axiom:}
+\[
+P(S) = 1
+\]
+The probability of the sample space \( S \) (i.e., the set of all possible outcomes) is 1.
+
+\textbf{Additivity Axiom (Countable Additivity for Disjoint Events):}  
+If \( A_1, A_2, A_3, \dots \) are mutually exclusive (disjoint) events, then:
+\[
+P(A_1 \cup A_2 \cup A_3 \cup \dots) = P(A_1) + P(A_2) + P(A_3) + \dots
+\]
+
+ For any two event A and B,
 \begin{align}
-\pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime} \\
-\pr{A^\prime \cdot B^\prime} + \pr{A^\prime + B^\prime} &= \pr{A^\prime} + \pr{B^\prime} \label{equation2} 
-\end{align}
-we start with two event say , X and Y ,and interpret the equation \ref{equation2} as $\brak{X + Y}+\brak{X \cdot Y} = X + Y $ \\ \\
-\textbf{Step 1: Express the Left-Hand Side}
-In Boolean algebra, subtraction is not a standard operation. However, we can interpret the equation,
-\begin{align}
-\brak{X + Y}+\brak{X \cdot Y} &= X + \brak{Y + \brak{X \cdot Y}}  
-\end{align}
-Now by absorption theorem , 
-\begin{align}
-\brak{Y + \brak{X \cdot Y}} &= Y \\
-\therefore \brak{X +  Y + \brak{X \cdot Y}} = \brak{X + Y}  
-\end{align}
-Let, $X = A^\prime$ $Y = B^\prime $
-\begin{align}
-    \therefore  \brak{A^\prime \cdot B^\prime} + \brak{A^\prime + B^\prime}&= \brak{{A^\prime} + {B^\prime}} \\
+	\because A + A^\prime &= 1 \\
+	 AB + A^\prime B &= B \label{2} \\
+	 \implies \pr{AB} + \pr{A^\prime B} &= \pr{B} \label{3} \\
+	 \because B + B^\prime &= 1 \\
+	 AB + AB^\prime &= A \label{5}\\
+	 \implies \pr{AB} + \pr{AB^\prime} &= \pr{A} \label{6} \\
+	 \text{adding } \eqref{2} \text{ and } \eqref{5} \\
+	 A + B &= AB + AB + AB^\prime + A^\prime B  \\
+	 A + B &= AB + AB^\prime + A^\prime B \\ 
+	 \pr{A + B} &= \pr{AB} + \pr{AB^\prime} + \pr{A^\prime B} \label{10}\\
+	 \text{Adding \eqref{3},\eqref{6} and \eqref{10} and cancelling same terms } \\
+	 \pr{AB} &= \pr{A} + \pr{B} - \pr{A + B} \\
+	 \because \pr{A^\prime B^\prime} &=  \pr{\brak{A + B}^\prime} \\
+	 \pr{A^\prime  B^\prime} &=  1 - \pr{A+B}
 \end{align}
 
 
-using the axioms of probability. The axioms we use are:
-
-\begin{enumerate}
-    \item \textbf{Non-negativity}: For any event \(E\), \(\Pr(E) \geq 0\).
-    \item \textbf{Unit measure}: \(\Pr(S) = 1\), where \(S\) is the sample space.
-    \item \textbf{Additivity}: For any two mutually exclusive events \(E\) and \(F\), \(\Pr(E + F) = \Pr(E) + \Pr(F)\).
-\end{enumerate}
-
-
-
-\subsection*{Detailed Derivation}
-
-
-1. \textbf{Apply the Additivity Axiom}:
-   Since \(A^{\prime}\) and \(B^{\prime} \cdot A^{\prime\prime}\) are mutually exclusive (they cannot occur simultaneously), we can apply the additivity axiom:
-   \[
-   \Pr(A^{\prime} + B^{\prime}) = \Pr(A^{\prime}) + \Pr(B^{\prime} \cdot A^{\prime\prime})
-   \]
-
-
-2. \textbf{Apply the Additivity Axiom Again}:
-   Since \(B^{\prime} \cdot A^{\prime\prime}\) and \(A^{\prime} \cdot B^{\prime}\) are mutually exclusive, we have:
-   \[
-   \Pr(B^{\prime}) = \Pr(B^{\prime} \cdot A^{\prime\prime}) + \Pr(A^{\prime} \cdot B^{\prime})
-   \]
-   Rearranging this gives:
-   \[
-   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(B^{\prime}) - \Pr(B^{\prime} \cdot A^{\prime\prime})
-   \]
-
-3. \textbf{Combine the Results}:
-   Substitute \(\Pr(B^{\prime} \cdot A^{\prime\prime})\) from the union expression into the intersection expression:
-   \[
-   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(B^{\prime}) - (\Pr(A^{\prime} + B^{\prime}) - \Pr(A^{\prime}))
-   \]
-   Simplifying this, we get:
-   \[
-   \Pr(A^{\prime} \cdot B^{\prime}) = \Pr(A^{\prime}) + \Pr(B^{\prime}) - \Pr(A^{\prime} + B^{\prime})
-   \]
-
-\begin{align}      
-    \therefore  \pr{A^\prime \cdot B^\prime} &= \pr{A^\prime} + \pr{B^\prime} - \pr{A^\prime + B^\prime}
-\end{align}
 
 From the given data in question,
     \begin{align}
-        \pr{A^\prime} &= \frac{30}{60} = \frac{1}{2} \\
-        \pr{B^\prime} &= \frac{28}{60} = \frac{7}{15} \\
-        \pr{A^\prime + B^\prime} &= \frac{36}{60} = \frac{3}{5}    
+        \pr{A} &= \frac{30}{60} \\
+        \pr{B} &= \frac{32}{60} \\
+        \pr{AB} &= \frac{24}{60}     
     \end{align}
 Now using axioms of probability (boolean logic),
 Thus, we write
     \begin{align}
-	    \pr{A^\prime + B^\prime} &= \pr{A^\prime} +  \pr{B^\prime} - \pr{A^\prime \cdot B^\prime} \\
-	                                 &= \frac{1}{2} + \frac{7}{15} - \frac{3}{5} \\
-	                                 &= \frac{11}{30} \\
-	                                 &= 0.36667
+	    \pr{A + B} &= \pr{A} +  \pr{B} - \pr{A B} \\
+	                                 &= \frac{30}{60} + \frac{32}{60} - \frac{24}{60} \\
+	                                 &= \frac{38}{60} \\
+	     \pr{A^\prime  B^\prime} &=  1 - \pr{A+B} \\ 
+	                              &= 1- \frac{38}{60} = \frac{11}{30} 
     \end{align} 
-So, the probablity $\pr{A^\prime + B^\prime}$ i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
-Xlso after verifying using computational method to get the probability as 0.36680.
+So, the probablity $\pr{A^\prime  B^\prime}$ i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
+Also after verifying using computational method to get the probability as 0.36680.
 \end{document}
 
 
