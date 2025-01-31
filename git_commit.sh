@@ -4,7 +4,7 @@ if [ -x "$1" ]; then
 	echo "Usage: ./git_commit.sh\"YOur commit message\""
 	exit 1
 fi
-COMMIT_MESSAGW="$1"
+COMMIT_MESSAGE="$1"
 
 git add .
 
