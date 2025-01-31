@@ -102,8 +102,8 @@ P(A_1 \cup A_2 \cup A_3 \cup \dots) = P(A_1) + P(A_2) + P(A_3) + \dots
 	 \pr{A + B} &= \pr{AB} + \pr{AB^\prime} + \pr{A^\prime B} \label{10}\\
 	 \text{Adding \eqref{3},\eqref{6} and \eqref{10} and cancelling same terms } \\
 	 \pr{AB} &= \pr{A} + \pr{B} - \pr{A + B} \\
-	 \because \pr{A^\prime B^\prime} &=  \pr{\brak{A + B}^\prime} \\
-	 \pr{A^\prime  B^\prime} &=  1 - \pr{A+B}
+	 \because \pr{A^\prime B^\prime} &=  \pr{\brak{A + B}^\prime} \label{13} \\
+	 \pr{A^\prime  B^\prime} &=  1 - \pr{A+B} \label{14}
 \end{align}
 
 
@@ -120,7 +120,7 @@ Thus, we write
 	    \pr{A + B} &= \pr{A} +  \pr{B} - \pr{A B} \\
 	                                 &= \frac{30}{60} + \frac{32}{60} - \frac{24}{60} \\
 	                                 &= \frac{38}{60} \\
-	     \pr{A^\prime  B^\prime} &=  1 - \pr{A+B} \\ 
+	     \pr{A^\prime  B^\prime} &=  1 - \pr{A+B} \brak{\because \eqref{13} \text{ and } \eqref{14}} \\ 
 	                              &= 1- \frac{38}{60} = \frac{11}{30} 
     \end{align} 
 So, the probablity $\pr{A^\prime  B^\prime}$ i.e., the probability that the student has opted neither NCC nor NSS is $\frac{11}{30} = 0.36667$.
